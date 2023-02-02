@@ -30,4 +30,5 @@ public class AdminProductDto {
 
     private AdminProductCurrency currency;
     private String image;
+    private String slug;
 }
