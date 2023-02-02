@@ -74,7 +74,7 @@ public class AdminProductController {
 
     }
 
-    private AdminProduct mapAdminProduct(AdminProductDto adminProductDto, @PathVariable Long id) {
+    private AdminProduct mapAdminProduct(AdminProductDto adminProductDto, Long id) {
         return AdminProduct.builder()
                 .id(id)
                 .name(adminProductDto.getName())
