@@ -1,1 +1,5 @@
 while ($counter -lt 120) {$counter++; "insert into product (name,category,description,price,currency, slug) values('Produkt "+ $counter  +"','Kat 1', 'Opis "+ $counter +"', 10.99, 'PLN', 'produkt-"+$counter+"');"}
+
+
+
+while ($counter -lt 120) {$counter++; "insert into product (name,category,description,price,currency, slug) values('Produkt "+ $counter  +"','Kat 1', 'Opis "+ $counter +"', 10.99, 'PLN', 'produkt-"+$counter+"');"}
