@@ -1,5 +1,6 @@
 package com.shop.category.service;
 
+import com.shop.category.controller.dto.ProductListDto;
 import com.shop.category.model.Category;
 import com.shop.category.model.CategoryProductsDto;
 import com.shop.category.repository.CategoryRepository;
@@ -7,6 +8,7 @@ import com.shop.product.model.Product;
 import com.shop.product.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,6 +31,18 @@ public class CategoryService {
         Category category = categoryRepository.findBySlug(slug);
         Page<Product> page =  productRepository.findByCategoryId(category.getId(), pageable);
 
-        return new CategoryProductsDto(category,page);
+        List<ProductListDto> productListDtos = page.getContent().stream()
+                .map(product -> ProductListDto.builder()
+                        .id(product.getId())
+                        .name(product.getName())
+                        .description(product.getDescription())
+                        .price(product.getPrice())
+                        .currency(product.getCurrency())
+                        .image(product.getImage())
+                        .slug(product.getSlug())
+                        .build())
+                .toList();
+
+        return new CategoryProductsDto(category,new PageImpl<>(productListDtos, pageable, page.getTotalElements()));
     }
 }
