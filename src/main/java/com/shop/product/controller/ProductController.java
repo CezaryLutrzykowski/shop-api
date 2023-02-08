@@ -3,6 +3,7 @@ package com.shop.product.controller;
 import com.shop.common.dto.ProductListDto;
 import com.shop.common.model.Product;
 import com.shop.product.service.ProductService;
+import com.shop.product.service.dto.ProductDto;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.domain.Page;
@@ -43,7 +44,7 @@ public class ProductController {
     }
 
     @GetMapping("/products/{slug}")
-    public Product getProduct(
+    public ProductDto getProduct(
             @Pattern(regexp = "[a-z0-9\\-]+")
             @Length(max = 255)
             @PathVariable
