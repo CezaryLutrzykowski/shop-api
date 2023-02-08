@@ -1,6 +1,5 @@
 package com.shop.admin.product.controller;
 
-import com.github.slugify.Slugify;
 import com.shop.admin.product.controller.dto.AdminProductDto;
 import com.shop.admin.product.controller.dto.UploadResponse;
 import com.shop.admin.product.model.AdminProduct;
@@ -20,6 +19,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+
+import static com.shop.admin.common.utils.SlugifyUtils.slugifySlug;
 
 @RestController
 @RequiredArgsConstructor
@@ -87,11 +88,5 @@ public class AdminProductController {
                 .image(adminProductDto.getImage())
                 .slug(slugifySlug(adminProductDto.getSlug()))
                 .build();
-    }
-
-    private String slugifySlug(String slug) {
-        Slugify slugify = new Slugify();
-        return slugify.withCustomReplacement("_","-")
-                .slugify(slug);
     }
 }

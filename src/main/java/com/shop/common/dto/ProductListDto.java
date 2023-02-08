@@ -1,4 +1,4 @@
-package com.shop.category.controller.dto;
+package com.shop.common.dto;
 
 import lombok.Builder;
 import lombok.Getter;

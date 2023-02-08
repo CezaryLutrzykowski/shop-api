@@ -1,4 +1,4 @@
-package com.shop.review.model;
+package com.shop.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

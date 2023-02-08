@@ -1,6 +1,6 @@
 package com.shop.review.service;
 
-import com.shop.review.model.Review;
+import com.shop.common.model.Review;
 import com.shop.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

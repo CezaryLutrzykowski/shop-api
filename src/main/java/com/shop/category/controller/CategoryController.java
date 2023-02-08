@@ -1,9 +1,9 @@
 package com.shop.category.controller;
 
 
-import com.shop.category.model.Category;
-import com.shop.category.model.CategoryProductsDto;
+import com.shop.category.dto.CategoryProductsDto;
 import com.shop.category.service.CategoryService;
+import com.shop.common.model.Category;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.data.domain.Pageable;
