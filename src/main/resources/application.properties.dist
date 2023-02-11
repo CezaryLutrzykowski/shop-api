@@ -11,3 +11,5 @@ spring.data.web.pageable.default-page-size=25
 spring.data.web.pageable.max-page-size=100
 
 app.uploadDit=./data/productImages/
+
+app.cart.cleanup.expression=0 0 3 * * *
