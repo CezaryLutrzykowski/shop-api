@@ -18,7 +18,7 @@ public class CartMapper {
                 .id(cart.getId())
                 .items(mapToCartItems(cart.getItems()))
                 .summary(mapToSummary(cart.getItems()))
-        .build();
+                .build();
     }
 
     private static List<CartSummaryItemDto> mapToCartItems(List<CartItem> items) {
@@ -53,7 +53,7 @@ public class CartMapper {
 
 
     private static SummaryDto mapToSummary(List<CartItem> items) {
-        return  SummaryDto.builder()
+        return SummaryDto.builder()
                 .grossValue(sumValues(items))
                 .build();
     }
@@ -62,7 +62,7 @@ public class CartMapper {
         return items.stream()
                 .map(CartMapper::calculateLineValue)
                 .reduce(BigDecimal::add)
-                .orElseThrow();
+                .orElse(BigDecimal.ZERO);
     }
 
 }
