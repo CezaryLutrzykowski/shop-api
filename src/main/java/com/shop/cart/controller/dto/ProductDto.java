@@ -15,3 +15,4 @@ public class ProductDto {
     private String image;
     private String slug;
 }
+

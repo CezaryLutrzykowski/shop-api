@@ -10,7 +10,6 @@ import javax.persistence.Id;
 @Entity
 @Getter
 public class Category {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

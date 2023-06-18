@@ -1,11 +1,14 @@
 package com.shop.product.service.dto;
 
 import lombok.Builder;
+import lombok.Getter;
 
+@Getter
 @Builder
-public record ReviewDto(Long id,
-                        Long productId,
-                        String authorName,
-                        String content,
-                        boolean moderate) {
+public class ReviewDto {
+    private Long id;
+    private Long productId;
+    private String authorName;
+    private String content;
+    private boolean moderate;
 }

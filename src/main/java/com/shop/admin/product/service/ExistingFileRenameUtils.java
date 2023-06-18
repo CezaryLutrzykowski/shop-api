@@ -7,24 +7,17 @@ import java.nio.file.Path;
 
 class ExistingFileRenameUtils {
 
-    /**
-     * test.png
-     * test-1.png
-     * test-2.png
-     * test-3.png
-     * test-4.png
-     */
-    public static String renameIfExists(Path uploadDit, String fileName) {
-        if (Files.exists(uploadDit.resolve(fileName))) {
-            return renameAndCheck(uploadDit, fileName);
+    public static String renameIfExists(Path uploadDir, String fileName) {
+        if(Files.exists(uploadDir.resolve(fileName))){
+            return renameAndCheck(uploadDir, fileName);
         }
         return fileName;
     }
 
-    private static String renameAndCheck(Path uploadDit, String fileName) {
+    private static String renameAndCheck(Path uploadDir, String fileName) {
         String newName = renameFileName(fileName);
-        if (Files.exists(uploadDit.resolve(newName))) {
-            newName = renameAndCheck(uploadDit, newName);
+        if(Files.exists(uploadDir.resolve(newName))){
+            newName = renameAndCheck(uploadDir, newName);
         }
         return newName;
     }

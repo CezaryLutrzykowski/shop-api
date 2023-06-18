@@ -21,7 +21,6 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
 
-
     public List<Category> getCategories() {
         return categoryRepository.findAll();
     }
@@ -29,8 +28,7 @@ public class CategoryService {
     @Transactional(readOnly = true)
     public CategoryProductsDto getCategoriesWithProducts(String slug, Pageable pageable) {
         Category category = categoryRepository.findBySlug(slug);
-        Page<Product> page =  productRepository.findByCategoryId(category.getId(), pageable);
-
+        Page<Product> page = productRepository.findByCategoryId(category.getId(), pageable);
         List<ProductListDto> productListDtos = page.getContent().stream()
                 .map(product -> ProductListDto.builder()
                         .id(product.getId())
@@ -42,7 +40,6 @@ public class CategoryService {
                         .slug(product.getSlug())
                         .build())
                 .toList();
-
-        return new CategoryProductsDto(category,new PageImpl<>(productListDtos, pageable, page.getTotalElements()));
+        return new CategoryProductsDto(category, new PageImpl<>(productListDtos, pageable, page.getTotalElements()));
     }
 }

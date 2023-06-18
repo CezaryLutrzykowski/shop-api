@@ -19,7 +19,7 @@ public class AdminReviewService {
     }
 
     @Transactional
-    public void moderate(long id) {
+    public void moderate(Long id) {
         reviewRepository.moderate(id);
     }
 

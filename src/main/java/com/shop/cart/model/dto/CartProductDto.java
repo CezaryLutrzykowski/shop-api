@@ -1,5 +1,4 @@
 package com.shop.cart.model.dto;
 
-public record CartProductDto(Long productId,
-                             Integer quantity) {
+public record CartProductDto(Long productId, int quantity) {
 }

@@ -12,5 +12,4 @@ public class CartSummaryItemDto {
     private int quantity;
     private ProductDto product;
     private BigDecimal lineValue;
-
 }

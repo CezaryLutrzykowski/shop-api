@@ -28,31 +28,30 @@ class CartServiceTest {
     private CartService cartService;
 
     @Test
-    void shouldAddProductToCartWhenCartIdNotExists() {
+    void shouldAddProductToCartWhenCartIdNotExists(){
         //given
         Long cartId = 0L;
         CartProductDto cartProductDto = new CartProductDto(1L, 1);
         when(productRepository.findById(1L)).thenReturn(Optional.of(Product.builder().id(1L).build()));
         when(cartRepository.save(any())).thenReturn(Cart.builder().id(1L).build());
         //when
-        Cart result = cartService.addProductToCard(cartId, cartProductDto);
+        Cart result = cartService.addProductToCart(cartId, cartProductDto);
         //then
         assertThat(result).isNotNull();
         assertThat(result.getId()).isEqualTo(1L);
     }
 
     @Test
-    void shouldAddProductToCartWhenCartIdExists() {
+    void shouldAddProductToCartWhenCartIdExists(){
         //given
         Long cartId = 1L;
         CartProductDto cartProductDto = new CartProductDto(1L, 1);
         when(productRepository.findById(1L)).thenReturn(Optional.of(Product.builder().id(1L).build()));
         when(cartRepository.findById(cartId)).thenReturn(Optional.of(Cart.builder().id(1L).build()));
         //when
-        Cart result = cartService.addProductToCard(cartId, cartProductDto);
+        Cart result = cartService.addProductToCart(cartId, cartProductDto);
         //then
         assertThat(result).isNotNull();
         assertThat(result.getId()).isEqualTo(1L);
     }
-
 }

@@ -15,5 +15,4 @@ public class ProductListDto {
     private String currency;
     private String image;
     private String slug;
-
 }

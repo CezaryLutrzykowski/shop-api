@@ -3,7 +3,12 @@ package com.shop.admin.review.controller;
 import com.shop.admin.review.model.AdminReview;
 import com.shop.admin.review.service.AdminReviewService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -11,6 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin/reviews")
 public class AdminReviewController {
+
     private final AdminReviewService reviewService;
 
     @GetMapping

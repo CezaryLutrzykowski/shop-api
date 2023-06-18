@@ -18,7 +18,6 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
-
     @PostMapping("/reviews")
     public Review addReview(@RequestBody @Valid ReviewDto reviewDto) {
         return reviewService.addReview(Review.builder()

@@ -1,19 +1,22 @@
 package com.shop.product.service.dto;
 
 import lombok.Builder;
+import lombok.Getter;
 
 import java.math.BigDecimal;
 import java.util.List;
 
+@Getter
 @Builder
-public record ProductDto(Long id,
-                         String name,
-                         Long categoryId,
-                         String description,
-                         String fullDescription,
-                         BigDecimal price,
-                         String currency,
-                         String image,
-                         String slug,
-                         List<ReviewDto> reviews) {
+public class ProductDto {
+    private Long id;
+    private String name;
+    private Long categoryId;
+    private String description;
+    private String fullDescription;
+    private BigDecimal price;
+    private String currency;
+    private String image;
+    private String slug;
+    private List<ReviewDto> reviews;
 }

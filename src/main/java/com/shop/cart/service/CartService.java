@@ -6,7 +6,7 @@ import com.shop.common.model.CartItem;
 import com.shop.common.model.Product;
 import com.shop.common.repository.CartRepository;
 import com.shop.common.repository.ProductRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +15,7 @@ import java.util.List;
 import static java.time.LocalDateTime.now;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class CartService {
 
     private final CartRepository cartRepository;
@@ -26,12 +26,12 @@ public class CartService {
     }
 
     @Transactional
-    public Cart addProductToCard(Long id, CartProductDto cartProductDto) {
-        Cart cart = getInitializedCard(id);
+    public Cart addProductToCart(Long id, CartProductDto cartProductDto) {
+        Cart cart = getInitializedCart(id);
         cart.addProduct(CartItem.builder()
-                .quantity(cartProductDto.quantity())
-                .product(getProduct(cartProductDto.productId()))
-                .cartId(cart.getId())
+                        .quantity(cartProductDto.quantity())
+                        .product(getProduct(cartProductDto.productId()))
+                        .cartId(cart.getId())
                 .build());
         return cart;
     }
@@ -40,11 +40,15 @@ public class CartService {
         return productRepository.findById(productId).orElseThrow();
     }
 
-    private Cart getInitializedCard(Long id) {
-        if (id == null || id <= 0) {
-            return cartRepository.save(Cart.builder().created(now()).build());
+    private Cart getInitializedCart(Long id) {
+        if(id == null || id <= 0) {
+            return saveNewCart();
         }
-        return cartRepository.findById(id).orElseThrow();
+        return cartRepository.findById(id).orElseGet(this::saveNewCart);
+    }
+
+    private Cart saveNewCart() {
+        return cartRepository.save(Cart.builder().created(now()).build());
     }
 
     @Transactional

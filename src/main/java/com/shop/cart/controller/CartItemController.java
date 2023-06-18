@@ -2,10 +2,14 @@ package com.shop.cart.controller;
 
 import com.shop.cart.service.CartItemService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("cartItems")
+@RequestMapping("/cartItems")
 @RequiredArgsConstructor
 public class CartItemController {
 
@@ -20,4 +24,5 @@ public class CartItemController {
     public Long countItemInCart(@PathVariable Long cartId) {
         return cartItemService.countItemInCart(cartId);
     }
+
 }

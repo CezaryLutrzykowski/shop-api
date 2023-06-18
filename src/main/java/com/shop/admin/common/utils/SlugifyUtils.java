@@ -4,6 +4,7 @@ import com.github.slugify.Slugify;
 import org.apache.commons.io.FilenameUtils;
 
 public class SlugifyUtils {
+
     public static String slugifyFileName(String filename) {
         String name = FilenameUtils.getBaseName(filename);
         Slugify slg = new Slugify();
@@ -15,7 +16,7 @@ public class SlugifyUtils {
 
     public static String slugifySlug(String slug) {
         Slugify slugify = new Slugify();
-        return slugify.withCustomReplacement("_","-")
+        return slugify.withCustomReplacement("_", "-")
                 .slugify(slug);
     }
 }

@@ -7,8 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface CartItemRepository extends JpaRepository<CartItem,Long> {
-
+public interface CartItemRepository extends JpaRepository<CartItem, Long> {
     Long countByCartId(Long cartId);
 
     @Query("delete from CartItem ci where ci.cartId=:cartId")

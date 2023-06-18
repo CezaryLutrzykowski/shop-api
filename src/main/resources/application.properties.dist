@@ -10,6 +10,15 @@ spring.liquibase.change-log=classpath:liquibase-changeLog.xml
 spring.data.web.pageable.default-page-size=25
 spring.data.web.pageable.max-page-size=100
 
-app.uploadDit=./data/productImages/
-
+app.uploadDir=./data/productImages/
 app.cart.cleanup.expression=0 0 3 * * *
+app.email.sender=pusty
+
+spring.mail.host=host
+spring.mail.username=email
+spring.mail.password=password
+spring.mail.properties.mail.transport.protocol=smtp
+spring.mail.properties.mail.smtp.port=587
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true

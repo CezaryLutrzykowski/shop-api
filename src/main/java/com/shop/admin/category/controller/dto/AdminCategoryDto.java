@@ -10,13 +10,8 @@ public class AdminCategoryDto {
     @NotBlank
     @Length(min = 4)
     private String name;
-
-    @NotBlank
-    @Length(min = 4)
     private String description;
-
     @NotBlank
     @Length(min = 4)
     private String slug;
-
 }

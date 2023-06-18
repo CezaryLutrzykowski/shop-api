@@ -13,29 +13,25 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
+@RequiredArgsConstructor
 public class CartCleanupService {
+
     private final CartRepository cartRepository;
     private final CartItemRepository cartItemRepository;
 
     @Transactional
     @Scheduled(cron = "${app.cart.cleanup.expression}")
-    public void cleanUpOldCarts() {
+    public void cleanupOldCarts(){
         List<Cart> carts = cartRepository.findByCreatedLessThan(LocalDateTime.now().minusDays(3));
         List<Long> ids = carts.stream()
                 .map(Cart::getId)
                 .toList();
         log.info("Stare koszyki " + carts.size());
-
-        /*carts.forEach(cart -> {
-            cartItemRepository.deleteByCartId(cart.getId());
-            cartRepository.deleteCartById(cart.getId());
-        });*/
-
-        if (!ids.isEmpty()){
+        if(!ids.isEmpty()){
             cartItemRepository.deleteAllByCartIdIn(ids);
             cartRepository.deleteAllByIdIn(ids);
         }
+
     }
 }

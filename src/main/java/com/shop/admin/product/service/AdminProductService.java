@@ -13,7 +13,6 @@ public class AdminProductService {
 
     private final AdminProductRepository productRepository;
 
-
     public Page<AdminProduct> getProducts(Pageable pageable) {
         return productRepository.findAll(pageable);
     }

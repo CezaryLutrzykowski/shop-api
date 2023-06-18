@@ -23,7 +23,6 @@ public class CartItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int quantity;
-
     @OneToOne
     private Product product;
     private Long cartId;

@@ -12,16 +12,15 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class CartMapper {
-
     public static CartSummaryDto mapToCartSummary(Cart cart) {
         return CartSummaryDto.builder()
                 .id(cart.getId())
-                .items(mapToCartItems(cart.getItems()))
+                .items(mapCartItems(cart.getItems()))
                 .summary(mapToSummary(cart.getItems()))
                 .build();
     }
 
-    private static List<CartSummaryItemDto> mapToCartItems(List<CartItem> items) {
+    private static List<CartSummaryItemDto> mapCartItems(List<CartItem> items) {
         return items.stream()
                 .map(CartMapper::mapToCartItem)
                 .toList();
@@ -51,7 +50,6 @@ public class CartMapper {
         return cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity()));
     }
 
-
     private static SummaryDto mapToSummary(List<CartItem> items) {
         return SummaryDto.builder()
                 .grossValue(sumValues(items))
@@ -64,5 +62,4 @@ public class CartMapper {
                 .reduce(BigDecimal::add)
                 .orElse(BigDecimal.ZERO);
     }
-
 }

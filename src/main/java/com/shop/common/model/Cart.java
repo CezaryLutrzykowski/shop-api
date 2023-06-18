@@ -35,12 +35,13 @@ public class Cart {
         if (items == null) {
             items = new ArrayList<>();
         }
-        items.stream()
+        new ArrayList<>(items).stream()
                 .filter(item -> Objects.equals(cartItem.getProduct().getId(), item.getProduct().getId()))
                 .findFirst()
-                .ifPresentOrElse(item -> item.setQuantity(item.getQuantity() + 1),
+                .ifPresentOrElse(
+                        item -> item.setQuantity(item.getQuantity() + 1),
                         () -> items.add(cartItem)
                 );
-    }
 
+    }
 }

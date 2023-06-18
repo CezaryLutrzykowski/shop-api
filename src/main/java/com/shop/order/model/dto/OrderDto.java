@@ -1,10 +1,13 @@
 package com.shop.order.model.dto;
 
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
+@Builder
 @Getter
 public class OrderDto {
     @NotBlank
@@ -22,6 +25,11 @@ public class OrderDto {
     private String email;
     @NotBlank
     private String phone;
-    @NotBlank
+    @NotNull
     private Long cartId;
+    @NotNull
+    private Long shipmentId;
+    @NotNull
+    private Long paymentId;
 }
+

@@ -4,7 +4,14 @@ import com.shop.admin.category.controller.dto.AdminCategoryDto;
 import com.shop.admin.category.model.AdminCategory;
 import com.shop.admin.category.service.AdminCategoryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -15,7 +22,7 @@ import static com.shop.admin.common.utils.SlugifyUtils.slugifySlug;
 @RequiredArgsConstructor
 public class AdminCategoryController {
 
-    private static final Long EMPTY_ID = null;
+    public static final Long EMPTY_ID = null;
     private final AdminCategoryService adminCategoryService;
 
     @GetMapping
